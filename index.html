@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript">
+    	const socket = new WebSocket("ws://127.0.0.1:3012");
+    	socket.onopen = function (event) {
+			var obj = {
+				key: "subscribe",
+				user_id: 1,
+				data: {
+					channels: ["test_subscription", "test_subscription2"],
+				}
+			};
+			obj = JSON.stringify(obj);
+			socket.send(obj);
+		};
+		socket.onmessage = function (event) {
+			console.log(event);
+		}
+	</script>
+	<title>Websocket test</title>
+</head>
+<body>
+	<h2>Websocket test</h2>
+</body>
+</html>
